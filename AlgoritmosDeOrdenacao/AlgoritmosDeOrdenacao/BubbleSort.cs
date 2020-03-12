@@ -61,15 +61,15 @@ namespace AlgoritmosDeOrdenacao
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            for (int write = 0; write < numerosOrdenados.Count; write++)
+            for (int i = 0; i < numerosOrdenados.Count; i++)
             {
-                for (int sort = numerosOrdenados.Count - 1; sort > write; sort--)
+                for (int j = numerosOrdenados.Count - 1; j > i; j--)
                 {
-                    if (numerosOrdenados[sort] < numerosOrdenados[sort - 1])
+                    if (numerosOrdenados[j] < numerosOrdenados[j - 1])
                     {
-                        moverNumero = numerosOrdenados[sort - 1];
-                        numerosOrdenados[sort - 1] = numerosOrdenados[sort];
-                        numerosOrdenados[sort] = moverNumero;
+                        moverNumero = numerosOrdenados[j - 1];
+                        numerosOrdenados[j - 1] = numerosOrdenados[j];
+                        numerosOrdenados[j] = moverNumero;
                     }
                 }
             }
@@ -89,15 +89,15 @@ namespace AlgoritmosDeOrdenacao
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            for (int write = 0; write < numerosOrdenados.Count; write++)
+            for (int i = 0; i < numerosOrdenados.Count; i++)
             {
-                for (int sort = 0; sort < numerosOrdenados.Count - (write + 1); sort++)
+                for (int j = 0; j < numerosOrdenados.Count - (i + 1); j++)
                 {
-                    if (numerosOrdenados[sort] > numerosOrdenados[sort + 1])
+                    if (numerosOrdenados[j] > numerosOrdenados[j + 1])
                     {
-                        moverNumero = numerosOrdenados[sort + 1];
-                        numerosOrdenados[sort + 1] = numerosOrdenados[sort];
-                        numerosOrdenados[sort] = moverNumero;
+                        moverNumero = numerosOrdenados[j + 1];
+                        numerosOrdenados[j + 1] = numerosOrdenados[j];
+                        numerosOrdenados[j] = moverNumero;
                     }
                 }
             }
