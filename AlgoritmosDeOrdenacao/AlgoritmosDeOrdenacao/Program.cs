@@ -7,6 +7,8 @@ namespace AlgoritmosDeOrdenacao
     {
         static void Main(string[] args)
         {
+            new InsertionSort().Executar();
+
             new BubbleSort().Executar();
 
             new SelectionSort().Executar();
