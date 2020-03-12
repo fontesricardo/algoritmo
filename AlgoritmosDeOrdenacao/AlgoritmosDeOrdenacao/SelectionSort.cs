@@ -29,16 +29,16 @@ namespace AlgoritmosDeOrdenacao
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            for (int write = 0; write < numerosOrdenados.Count; write++)
+            for (int i = 0; i < numerosOrdenados.Count; i++)
             {
-                posicaoMenorNumero = write;
-                for (int sort = write + 1; sort < numerosOrdenados.Count; sort++)
+                posicaoMenorNumero = i;
+                for (int j = i + 1; j < numerosOrdenados.Count; j++)
                 {
-                    if (numerosOrdenados[posicaoMenorNumero] > numerosOrdenados[sort])
-                        posicaoMenorNumero = sort;
+                    if (numerosOrdenados[posicaoMenorNumero] > numerosOrdenados[j])
+                        posicaoMenorNumero = j;
                 }
-                trocarDePosicao = numerosOrdenados[write];
-                numerosOrdenados[write] = numerosOrdenados[posicaoMenorNumero];
+                trocarDePosicao = numerosOrdenados[i];
+                numerosOrdenados[i] = numerosOrdenados[posicaoMenorNumero];
                 numerosOrdenados[posicaoMenorNumero] = trocarDePosicao;
             }
 
@@ -52,7 +52,7 @@ namespace AlgoritmosDeOrdenacao
         {
             var numerosOrdenados = numerosDesordenados.ToList();
 
-            int totalNumeros = numerosOrdenados.Count();
+            int totalNumeros = numerosOrdenados.Count;
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
