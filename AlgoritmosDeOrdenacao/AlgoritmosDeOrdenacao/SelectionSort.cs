@@ -12,11 +12,9 @@ namespace AlgoritmosDeOrdenacao
         {
             var numerosDesordenados = new List<int> { 5, 9, 3, 1, 2, 8, 4, 7, 6 };
 
-            var selectionSort = new SelectionSort();
+            var numerosOrdenados1 = OrdenarPrimeiraVersao(numerosDesordenados);
 
-            var numerosOrdenados1 = selectionSort.OrdenarPrimeiraVersao(numerosDesordenados);
-
-            var numerosOrdenados2 = selectionSort.Ordenar(numerosDesordenados);
+            var numerosOrdenados2 = Ordenar(numerosDesordenados);
         }
 
         private IEnumerable<int> OrdenarPrimeiraVersao(IEnumerable<int> numerosDesordenados)

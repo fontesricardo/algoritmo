@@ -12,9 +12,7 @@ namespace AlgoritmosDeOrdenacao
         {
             var numerosDesordenados = new List<int> { 5, 9, 3, 1, 2, 8, 4, 7, 6 };
 
-            var selectionSort = new InsertionSort();
-
-            var numerosOrdenados1 = selectionSort.Ordenar(numerosDesordenados);
+            var numerosOrdenados1 = Ordenar(numerosDesordenados);
         }
 
         private IEnumerable<int> Ordenar(IEnumerable<int> numerosDesordenados)
@@ -38,7 +36,7 @@ namespace AlgoritmosDeOrdenacao
             }
 
             stopwatch.Stop();
-            Console.WriteLine($"{nameof(InsertionSort)}.{nameof(OrdenarPrimeiraVersao)} => Fim {stopwatch.Elapsed}");
+            Console.WriteLine($"{nameof(InsertionSort)}.{nameof(Ordenar)} => Fim {stopwatch.Elapsed}");
 
             return numerosOrdenados;
         }

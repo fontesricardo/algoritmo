@@ -12,13 +12,11 @@ namespace AlgoritmosDeOrdenacao
         {
             var numerosDesordenados = new List<int> { 5, 9, 3, 1, 2, 8, 4, 7, 6 };
 
-            var bubbleSort = new BubbleSort();
+            var numerosOrdenados3 = OrdenarDoFimAoInicio(numerosDesordenados);
 
-            var numerosOrdenados3 = bubbleSort.OrdenarDoFimAoInicio(numerosDesordenados);
+            var numerosOrdenados2 = OrdenarDoInicioAoFim(numerosDesordenados);
 
-            var numerosOrdenados2 = bubbleSort.OrdenarDoInicioAoFim(numerosDesordenados);
-
-            var numerosOrdenados1 = bubbleSort.OrdenarPrimeiraVersao(numerosDesordenados);
+            var numerosOrdenados1 = OrdenarPrimeiraVersao(numerosDesordenados);
         }
 
         private IEnumerable<int> OrdenarPrimeiraVersao(IEnumerable<int> numerosDesordenados)
