@@ -13,6 +13,8 @@ namespace AlgoritmosDeOrdenacao
 
             new SelectionSort().Executar();
 
+            new HeapSort().Executar();
+
             Console.Read();
         }
     }
