@@ -16,24 +16,23 @@ namespace AlgoritmosDeOrdenacao
 
         public void Executar()
         {
-            var numerosDesordenados = new List<int> { 10, 3, 9, 1, 7, 8, 2, 6, 4, 5 };
+            var numerosDesordenados = new List<int> { 74, 19, 24, 5, 8, 79, 42, 15, 20, 53, 11 };
 
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            var numerosOrdenados1 = OrdenarPrimeiraVersao(numerosDesordenados);
 
+            var numerosOrdenados2 = Ordenar(numerosDesordenados.ToArray());
+        }
+
+        private IEnumerable<int> OrdenarPrimeiraVersao(IEnumerable<int> numerosDesordenados)
+        {
             foreach (var numero in numerosDesordenados)
             {
                 AdicionarNaHeap(numero);
             }
 
-            var numerosOrdenados1 = OrdenarPrimeiraVersao();
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-            stopwatch.Stop();
-            Console.WriteLine($"{nameof(HeapSort)}.{nameof(OrdenarPrimeiraVersao)} => Fim {stopwatch.Elapsed}");
-        }
-
-        private IEnumerable<int> OrdenarPrimeiraVersao()
-        {
             var ultimaPosicaoNaoValidada = _heap.Count - 1;
 
             while (ultimaPosicaoNaoValidada > 0)
@@ -85,6 +84,9 @@ namespace AlgoritmosDeOrdenacao
                 }
             }
 
+            stopwatch.Stop();
+            Console.WriteLine($"{nameof(HeapSort)}.{nameof(OrdenarPrimeiraVersao)} => Fim {stopwatch.Elapsed}");
+
             return _heap;
         }
 
@@ -110,11 +112,6 @@ namespace AlgoritmosDeOrdenacao
             }
         }
 
-        private int RetirarDaHeap()
-        {
-            return _heap[0];
-        }
-
         private int PosicaoDoPai(int posicaoFilho)
         {
             if (posicaoFilho % 2 == 0)
@@ -131,6 +128,52 @@ namespace AlgoritmosDeOrdenacao
         private int PosicaoFihoADireita(int posicaoPai)
         {
             return 2 * posicaoPai + 2;
+        }
+        
+        private int[] Ordenar(int[] array)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var length = array.Length;
+            for (int i = length / 2 - 1; i >= 0; i--)
+            {
+                Heapify(array, length, i);
+            }
+            for (int i = length - 1; i >= 0; i--)
+            {
+                int temp = array[0];
+                array[0] = array[i];
+                array[i] = temp;
+                Heapify(array, i, 0);
+            }
+
+            stopwatch.Stop();
+            Console.WriteLine($"{nameof(HeapSort)}.{nameof(Ordenar)} => Fim {stopwatch.Elapsed}");
+
+            return array;
+        }
+
+        private void Heapify(int[] array, int length, int i)
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            if (left < length && array[left] > array[largest])
+            {
+                largest = left;
+            }
+            if (right < length && array[right] > array[largest])
+            {
+                largest = right;
+            }
+            if (largest != i)
+            {
+                int swap = array[i];
+                array[i] = array[largest];
+                array[largest] = swap;
+                Heapify(array, length, largest);
+            }
         }
     }
 }
